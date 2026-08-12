@@ -618,8 +618,11 @@ a.house-card:focus-visible,
 }
 
 .house-card[role="button"]:hover .house-name-button,
+.house-name-button:hover {
+  color: var(--swatch-b);
+}
+
 .house-card[role="button"]:focus-visible .house-name-button,
-.house-name-button:hover,
 .house-name-button:focus-visible {
   color: var(--swatch-b);
   outline: 2px solid rgba(255, 248, 220, 0.35);
