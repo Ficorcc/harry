@@ -88,6 +88,8 @@ export const houses = [
     cn: "格兰芬多",
     motto: "勇气、胆识与热烈的心",
     colors: ["#7f1d1d", "#d8a845"],
+    badgeUrl: "/assets/house-badges/gryffindor-official-banner.png",
+    badgeSource: "https://www.harrypotter.com/house/gryffindor",
     summary:
       "格兰芬多由戈德里克·格兰芬多创立，重视勇气、胆识、决心与骑士精神。学院颜色是猩红与金色，象征动物是狮子，公共休息室位于格兰芬多塔楼。",
     details: [
@@ -107,6 +109,8 @@ export const houses = [
     cn: "斯莱特林",
     motto: "野心、策略与清醒的目标感",
     colors: ["#064e3b", "#c8c8c8"],
+    badgeUrl: "/assets/house-badges/slytherin-official-banner.png",
+    badgeSource: "https://www.harrypotter.com/house/slytherin",
     summary:
       "斯莱特林由萨拉查·斯莱特林创立，重视野心、机敏、资源整合与自我证明。学院颜色是绿色与银色，象征动物是蛇，公共休息室位于城堡地下湖附近的地牢区域。",
     details: [
@@ -126,6 +130,8 @@ export const houses = [
     cn: "拉文克劳",
     motto: "智慧、好奇心与锋利的审美",
     colors: ["#1e3a8a", "#b08d57"],
+    badgeUrl: "/assets/house-badges/ravenclaw-official-banner.png",
+    badgeSource: "https://www.harrypotter.com/house/ravenclaw",
     summary:
       "拉文克劳由罗伊纳·拉文克劳创立，重视智慧、学习、机智与独立思考。学院颜色是蓝色与青铜色，象征动物是鹰，公共休息室位于拉文克劳塔楼。",
     details: [
@@ -145,6 +151,8 @@ export const houses = [
     cn: "赫奇帕奇",
     motto: "忠诚、耐心与可靠的温柔",
     colors: ["#d6a21f", "#191714"],
+    badgeUrl: "/assets/house-badges/hufflepuff-official-banner.png",
+    badgeSource: "https://www.harrypotter.com/house/hufflepuff",
     summary:
       "赫奇帕奇由赫尔加·赫奇帕奇创立，重视勤劳、耐心、忠诚与公平。学院颜色是黄色与黑色，象征动物是獾，公共休息室靠近霍格沃茨厨房。",
     details: [

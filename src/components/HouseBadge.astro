@@ -4,50 +4,14 @@ interface Props {
     id: string;
     cn: string;
     name: string;
+    badgeUrl: string;
   };
   size?: "card" | "dialog";
 }
 
 const { house, size = "card" } = Astro.props;
-const gradientId = `${house.id}-${size}-cloth`;
-
-const iconPaths: Record<string, string[]> = {
-  gryffindor: [
-    "M41 56c-7-6-9-17-2-24 8-8 23-4 25 8 2 11-8 19-20 17",
-    "M42 32c8 1 13 6 15 13M49 37c-5 4-6 9-2 15",
-    "M36 59c5 14 18 17 27 6M34 43c-5 4-7 10-5 17",
-  ],
-  ravenclaw: [
-    "M28 53c12-18 31-24 45-13-16 0-24 8-31 23",
-    "M39 61c11-4 21-11 30-24M42 43c-8 2-14 7-18 14",
-    "M50 36l7-8 3 10M47 61l-5 14 13-10",
-  ],
-  hufflepuff: [
-    "M35 47c5-12 21-17 32-8 9 7 8 23-2 31-11 8-28 3-32-10",
-    "M42 44c7 4 15 4 22 0M41 55c9-4 18-4 27 0",
-    "M50 36c-3-6-9-8-14-5M64 39c3-6 9-8 14-5",
-  ],
-  slytherin: [
-    "M60 27c-16 4-23 16-14 27 7 9 3 17-10 22",
-    "M45 52c13 2 25-4 27-14 1-6-3-11-9-11",
-    "M58 28c7 3 12 7 16 13M34 76c10 4 21 0 28-9",
-  ],
-};
-
-const paths = iconPaths[house.id] ?? iconPaths.gryffindor;
 ---
 
-<svg class:list={["house-badge", `house-badge-${size}`]} viewBox="0 0 96 132" role="img" aria-label={`${house.cn}旗徽`}>
-  <defs>
-    <linearGradient id={gradientId} x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="var(--swatch-a)" />
-      <stop offset="100%" stop-color="color-mix(in srgb, var(--swatch-a) 74%, #ffffff)" />
-    </linearGradient>
-  </defs>
-  <path class="badge-shadow" d="M17 6h62v75L48 108 17 81Z" />
-  <path class="badge-cloth" d="M17 4h62v76L48 110 17 80Z" fill={`url(#${gradientId})`} />
-  <path class="badge-side" d="M66 4h13v76L48 110l18-32Z" />
-  <path class="badge-rim" d="M17 4h62v76L48 110 17 80Z" />
-  <path class="badge-shield" d="M32 33h32v23c0 12-8 21-16 25-8-4-16-13-16-25Z" />
-  {paths.map((path) => <path class="badge-icon" d={path} />)}
-</svg>
+<figure class:list={["house-badge", `house-badge-${size}`, `house-badge-${house.id}`]}>
+  <img src={house.badgeUrl} alt={`${house.cn}官方垂挂旗徽`} loading="lazy" decoding="async" />
+</figure>
