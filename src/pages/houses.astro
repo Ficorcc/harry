@@ -22,23 +22,18 @@ import { houses } from "@data/theme";
             class="house-card"
             id={`${house.id}-card`}
             style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}
+            role="button"
+            tabindex="0"
+            data-house-open={house.id}
+            aria-haspopup="dialog"
+            aria-controls={`${house.id}-dialog`}
           >
             <HouseBadge house={house} />
             <div class="swatches" aria-hidden="true">
               <span></span>
               <span></span>
             </div>
-            <h2>
-              <button
-                class="house-name-button"
-                type="button"
-                data-house-open={house.id}
-                aria-haspopup="dialog"
-                aria-controls={`${house.id}-dialog`}
-              >
-                {house.cn}
-              </button>
-            </h2>
+            <h2 class="house-name-button">{house.cn}</h2>
             <p>{house.name}</p>
             <small>{house.motto}</small>
           </article>
@@ -83,13 +78,21 @@ import { houses } from "@data/theme";
 </BaseLayout>
 
 <script>
-  const openButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-house-open]"));
+  const openCards = Array.from(document.querySelectorAll<HTMLElement>("[data-house-open]"));
   const dialogs = Array.from(document.querySelectorAll<HTMLDialogElement>(".house-dialog"));
 
-  openButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const dialog = document.getElementById(`${button.dataset.houseOpen}-dialog`) as HTMLDialogElement | null;
+  openCards.forEach((card) => {
+    const openDialog = () => {
+      const dialog = document.getElementById(`${card.dataset.houseOpen}-dialog`) as HTMLDialogElement | null;
       dialog?.showModal();
+    };
+
+    card.addEventListener("click", openDialog);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openDialog();
+      }
     });
   });
 

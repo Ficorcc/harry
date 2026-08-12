@@ -550,8 +550,15 @@ a.house-card {
     transform 180ms ease;
 }
 
+a.house-card,
+.house-card[role="button"] {
+  cursor: pointer;
+}
+
 a.house-card:hover,
-a.house-card:focus-visible {
+a.house-card:focus-visible,
+.house-card[role="button"]:hover,
+.house-card[role="button"]:focus-visible {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--swatch-b) 58%, #fff8dc);
   outline: none;
@@ -602,16 +609,16 @@ a.house-card:focus-visible {
 }
 
 .house-name-button {
-  display: inline;
   border: 0;
   padding: 0;
   color: inherit;
   background: transparent;
-  cursor: pointer;
   font: inherit;
   text-align: left;
 }
 
+.house-card[role="button"]:hover .house-name-button,
+.house-card[role="button"]:focus-visible .house-name-button,
 .house-name-button:hover,
 .house-name-button:focus-visible {
   color: var(--swatch-b);
