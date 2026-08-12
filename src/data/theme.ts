@@ -83,28 +83,88 @@ export const posts = [
 
 export const houses = [
   {
+    id: "gryffindor",
     name: "Gryffindor",
     cn: "格兰芬多",
     motto: "勇气、胆识与热烈的心",
     colors: ["#7f1d1d", "#d8a845"],
+    emblemUrl: "https://www.hp-lexicon.org/wp-content/uploads/2015/08/gryffindor-shield.jpg",
+    sourceUrl: "https://www.hp-lexicon.org/thing/gryffindor-house/shield_01-5b1-5d/",
+    summary:
+      "格兰芬多由戈德里克·格兰芬多创立，重视勇气、胆识、决心与骑士精神。学院颜色是猩红与金色，象征动物是狮子，公共休息室位于格兰芬多塔楼。",
+    details: [
+      "这个学院适合敢于站出来、愿意保护他人、遇到困难时先行动起来的人。",
+      "格兰芬多与斯莱特林长期保持强烈竞争关系，但也与其他学院有大量合作与友谊。",
+    ],
+    people: [
+      { name: "Harry Potter", role: "以勇气和选择定义自己的学生，后来成为对抗伏地魔的核心人物。" },
+      { name: "Hermione Granger", role: "聪慧、勤奋且极有原则，是格兰芬多勇气与理性的结合。" },
+      { name: "Ron Weasley", role: "忠诚、幽默，在关键时刻总会回到朋友身边。" },
+      { name: "Albus Dumbledore", role: "格兰芬多出身的传奇巫师，曾任霍格沃茨校长。" },
+    ],
   },
   {
+    id: "slytherin",
     name: "Slytherin",
     cn: "斯莱特林",
     motto: "野心、策略与清醒的目标感",
     colors: ["#064e3b", "#c8c8c8"],
+    emblemUrl: "https://www.hp-lexicon.org/wp-content/uploads/2015/08/slytherin-shield.jpg",
+    sourceUrl: "https://www.hp-lexicon.org/thing/slytherin-house/shield_sly/",
+    summary:
+      "斯莱特林由萨拉查·斯莱特林创立，重视野心、机敏、资源整合与自我证明。学院颜色是绿色与银色，象征动物是蛇，公共休息室位于城堡地下湖附近的地牢区域。",
+    details: [
+      "斯莱特林常被误解，但它真正突出的气质是目标感、策略意识和对成就的渴望。",
+      "这个学院的人往往懂得审时度势，也更在意声望、传统和长远利益。",
+    ],
+    people: [
+      { name: "Severus Snape", role: "斯莱特林院长之一，复杂、克制，人生选择充满矛盾与牺牲。" },
+      { name: "Draco Malfoy", role: "出身纯血家族，骄傲而敏感，是学院声望压力的代表。" },
+      { name: "Merlin", role: "传说中的伟大巫师，也被列为著名斯莱特林。" },
+      { name: "Horace Slughorn", role: "擅长经营人脉的魔药课教授，曾多次担任斯莱特林院长。" },
+    ],
   },
   {
+    id: "ravenclaw",
     name: "Ravenclaw",
     cn: "拉文克劳",
     motto: "智慧、好奇心与锋利的审美",
     colors: ["#1e3a8a", "#b08d57"],
+    emblemUrl: "https://www.hp-lexicon.org/wp-content/uploads/2015/08/shield_rav.jpg",
+    sourceUrl: "https://www.hp-lexicon.org/thing/ravenclaw-house/shield_rav/",
+    summary:
+      "拉文克劳由罗伊纳·拉文克劳创立，重视智慧、学习、机智与独立思考。学院颜色是蓝色与青铜色，象征动物是鹰，公共休息室位于拉文克劳塔楼。",
+    details: [
+      "拉文克劳鼓励学生保持好奇心，也允许他们拥有古怪、独立甚至不合群的一面。",
+      "学院入口以谜题代替口令，正好体现它对思考能力的偏爱。",
+    ],
+    people: [
+      { name: "Luna Lovegood", role: "独特、敏锐且忠于自我，是拉文克劳式自由精神的代表。" },
+      { name: "Filius Flitwick", role: "霍格沃茨魔咒课教授与拉文克劳院长，温和而学识深厚。" },
+      { name: "Cho Chang", role: "拉文克劳学生与魁地奇找球手，曾加入邓布利多军。" },
+      { name: "Gilderoy Lockhart", role: "曾任黑魔法防御术教授，以名声和记忆咒闻名。" },
+    ],
   },
   {
+    id: "hufflepuff",
     name: "Hufflepuff",
     cn: "赫奇帕奇",
     motto: "忠诚、耐心与可靠的温柔",
     colors: ["#d6a21f", "#191714"],
+    emblemUrl: "https://www.hp-lexicon.org/wp-content/uploads/2015/08/hufflepuff-shield.jpg",
+    sourceUrl: "https://www.hp-lexicon.org/thing/hufflepuff-house/shield_huf/",
+    summary:
+      "赫奇帕奇由赫尔加·赫奇帕奇创立，重视勤劳、耐心、忠诚与公平。学院颜色是黄色与黑色，象征动物是獾，公共休息室靠近霍格沃茨厨房。",
+    details: [
+      "这个学院看重可靠、善良和脚踏实地，不需要用锋芒来证明自己。",
+      "赫奇帕奇也以较少产生黑巫师而闻名，整体气质更偏温暖、稳定和包容。",
+    ],
+    people: [
+      { name: "Cedric Diggory", role: "三强争霸赛勇士，正直、受欢迎，也体现了学院的公平精神。" },
+      { name: "Newt Scamander", role: "神奇动物学家，以温柔、耐心和对生命的尊重闻名。" },
+      { name: "Nymphadora Tonks", role: "傲罗与易容马格斯，活泼、勇敢，是凤凰社成员。" },
+      { name: "Pomona Sprout", role: "草药课教授与赫奇帕奇院长，务实且照顾学生。" },
+    ],
   },
 ];
 
