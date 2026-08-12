@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Hero from "@components/Hero.astro";
+import HouseBadge from "@components/HouseBadge.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import PostCard from "@components/PostCard.astro";
 import { houses, posts, spells } from "@data/theme";
@@ -61,7 +62,7 @@ import { houses, posts, spells } from "@data/theme";
       <div class="house-grid">
         {houses.map((house) => (
           <article class="house-card" style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}>
-            <img class="house-emblem" src={house.emblemUrl} alt={`${house.cn}官方徽章`} loading="lazy" />
+            <HouseBadge house={house} />
             <div class="swatches" aria-hidden="true">
               <span></span>
               <span></span>

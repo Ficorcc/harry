@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import HouseBadge from "@components/HouseBadge.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import { houses } from "@data/theme";
 ---
@@ -22,7 +23,7 @@ import { houses } from "@data/theme";
             id={`${house.id}-card`}
             style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}
           >
-            <img class="house-emblem" src={house.emblemUrl} alt={`${house.cn}官方徽章`} loading="lazy" />
+            <HouseBadge house={house} />
             <div class="swatches" aria-hidden="true">
               <span></span>
               <span></span>
@@ -51,7 +52,7 @@ import { houses } from "@data/theme";
       <div class="dialog-panel" style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}>
         <button class="dialog-close" type="button" data-house-close aria-label="关闭介绍">×</button>
         <div class="dialog-heading">
-          <img class="dialog-emblem" src={house.emblemUrl} alt={`${house.cn}官方徽章`} loading="lazy" />
+          <HouseBadge house={house} size="dialog" />
           <div>
             <p class="eyebrow">{house.name}</p>
             <h2 id={`${house.id}-title`}>{house.cn}</h2>
@@ -76,7 +77,6 @@ import { houses } from "@data/theme";
             </div>
           </section>
         </div>
-        <a class="dialog-source" href={house.sourceUrl} target="_blank" rel="noreferrer">徽章来源</a>
       </div>
     </dialog>
   ))}

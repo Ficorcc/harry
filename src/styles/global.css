@@ -535,27 +535,65 @@ h1 {
   position: relative;
   min-height: 260px;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px 132px 24px 24px;
   border: 1px solid rgba(239, 225, 180, 0.16);
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--swatch-a) 65%, #161014), rgba(20, 15, 18, 0.84)),
     #1a1115;
 }
 
-.house-emblem {
+.house-badge {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 76px;
-  height: 76px;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 50%;
-  object-fit: contain;
-  background:
-    radial-gradient(circle, rgba(255, 248, 220, 0.92), rgba(255, 248, 220, 0.68)),
-    linear-gradient(135deg, var(--swatch-a), var(--swatch-b));
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  right: 16px;
+  bottom: 16px;
+  width: 96px;
+  height: 132px;
+  overflow: visible;
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.34));
+}
+
+.badge-shadow {
+  fill: rgba(0, 0, 0, 0.28);
+  transform: translate(3px, 4px);
+}
+
+.badge-cloth {
+  stroke: color-mix(in srgb, var(--swatch-b) 68%, #fff8dc);
+  stroke-width: 2.2;
+}
+
+.badge-side {
+  fill: rgba(0, 0, 0, 0.16);
+}
+
+.badge-rim,
+.badge-shield,
+.badge-icon {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.badge-rim {
+  stroke: rgba(255, 248, 220, 0.22);
+  stroke-width: 1;
+}
+
+.badge-shield {
+  stroke: color-mix(in srgb, var(--swatch-b) 78%, #fff8dc);
+  stroke-width: 2;
+}
+
+.badge-icon {
+  stroke: color-mix(in srgb, var(--swatch-b) 78%, #fff8dc);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+[style*="#191714"] .badge-shield,
+[style*="#191714"] .badge-icon,
+[style*="#191714"] .badge-cloth {
+  stroke: #201915;
 }
 
 .house-card h3,
@@ -672,16 +710,11 @@ h1 {
   margin-bottom: 28px;
 }
 
-.dialog-emblem {
+.dialog-heading .house-badge {
+  position: static;
   width: 112px;
-  height: 112px;
-  padding: 10px;
-  border: 1px solid rgba(239, 225, 180, 0.24);
-  border-radius: 50%;
-  object-fit: contain;
-  background:
-    radial-gradient(circle, rgba(255, 248, 220, 0.95), rgba(255, 248, 220, 0.74)),
-    linear-gradient(135deg, var(--swatch-a), var(--swatch-b));
+  height: 154px;
+  justify-self: center;
 }
 
 .dialog-heading h2 {
@@ -735,13 +768,6 @@ h1 {
 .character-list p {
   margin-bottom: 0;
   font-size: 0.95rem;
-}
-
-.dialog-source {
-  display: inline-flex;
-  margin-top: 26px;
-  color: var(--swatch-b);
-  font: 850 0.86rem/1 ui-sans-serif, system-ui, sans-serif;
 }
 
 .spell-layout {
@@ -922,9 +948,9 @@ h1 {
     grid-template-columns: 88px minmax(0, 1fr);
   }
 
-  .dialog-emblem {
+  .dialog-heading .house-badge {
     width: 88px;
-    height: 88px;
+    height: 121px;
   }
 }
 
@@ -969,9 +995,14 @@ h1 {
     padding: 20px;
   }
 
-  .house-emblem {
-    width: 64px;
-    height: 64px;
+  .house-badge {
+    width: 78px;
+    height: 108px;
+  }
+
+  .house-card {
+    min-height: 248px;
+    padding-right: 110px;
   }
 
   .dialog-heading {
