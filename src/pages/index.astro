@@ -1,0 +1,95 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import PostCard from "@components/PostCard.astro";
+import { houses, posts, spells } from "@data/theme";
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="section parchment-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Theme Preview"
+        title="像一本会发光的魔法书"
+        copy="首页、文章、学院、咒语目录都已经搭好，适合作为 Astro 7 主题继续扩展。"
+      />
+      <div class="feature-grid">
+        <article class="feature-block">
+          <span>01</span>
+          <h3>电影感首页</h3>
+          <p>大图背景、深色遮罩和清晰行动入口，首屏直接进入主题体验。</p>
+        </article>
+        <article class="feature-block">
+          <span>02</span>
+          <h3>文章系统雏形</h3>
+          <p>演示数据集中管理，后续可以换成 Markdown 内容集合。</p>
+        </article>
+        <article class="feature-block">
+          <span>03</span>
+          <h3>响应式布局</h3>
+          <p>从手机到桌面都保持可读，导航、卡片和长标题不会挤在一起。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section">
+    <div class="container split-layout">
+      <div>
+        <SectionHeader
+          eyebrow="Latest Entries"
+          title="预言家日报式文章流"
+          copy="带分类、日期、摘要和阅读时长，适合影评、设定笔记或角色档案。"
+        />
+      </div>
+      <div class="post-grid compact">
+        {posts.slice(0, 2).map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section house-band">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Houses"
+        title="四大学院色彩系统"
+        copy="每张卡片都带有独立配色变量，方便扩展到标签、专题页和人物页。"
+      />
+      <div class="house-grid">
+        {houses.map((house) => (
+          <article class="house-card" style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}>
+            <div class="swatches" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <h3>{house.cn}</h3>
+            <p>{house.name}</p>
+            <small>{house.motto}</small>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section spell-section">
+    <div class="container spell-layout">
+      <SectionHeader
+        eyebrow="Spellbook"
+        title="咒语目录组件"
+        copy="适合做术语表、组件索引、世界观设定词条。"
+      />
+      <div class="spell-list">
+        {spells.map((spell) => (
+          <article>
+            <strong>{spell.incantation}</strong>
+            <span>{spell.cn}</span>
+            <p>{spell.use}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

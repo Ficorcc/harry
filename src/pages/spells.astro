@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import { spells } from "@data/theme";
+---
+
+<BaseLayout title="咒语" description="魔法学院主题的咒语目录页面。">
+  <section class="page-hero spell-hero">
+    <div class="container">
+      <p class="eyebrow">Spellbook</p>
+      <h1>咒语目录</h1>
+      <p>把术语表做成有节奏的内容索引，适合世界观、组件和专题说明。</p>
+    </div>
+  </section>
+  <section class="section spell-section">
+    <div class="container">
+      <SectionHeader title="Useful Incantations" copy="短条目保持高信息密度，移动端也能快速浏览。" />
+      <div class="spell-list large">
+        {spells.map((spell) => (
+          <article>
+            <strong>{spell.incantation}</strong>
+            <span>{spell.cn}</span>
+            <p>{spell.use}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

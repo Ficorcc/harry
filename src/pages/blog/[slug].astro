@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { posts } from "@data/theme";
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={post.title} description={post.excerpt}>
+  <article class="article-shell">
+    <header class:list={["article-header", `accent-${post.accent}`]}>
+      <p class="post-meta">{post.category} / {post.date} / {post.readingTime}</p>
+      <h1>{post.title}</h1>
+      <p>{post.excerpt}</p>
+    </header>
+    <div class="article-body">
+      {post.body.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <footer class="article-footer">
+      <a class="button button-secondary" href="/blog/">
+        <span aria-hidden="true">&lt;</span>
+        返回归档
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

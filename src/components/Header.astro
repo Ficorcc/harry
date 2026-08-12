@@ -1,0 +1,18 @@
+---
+import { site } from "@data/theme";
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="返回首页">
+    <span class="brand-mark" aria-hidden="true">HP</span>
+    <span>
+      <strong>Wizarding Theme</strong>
+      <small>Astro 7</small>
+    </span>
+  </a>
+  <nav aria-label="主导航">
+    {site.nav.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+</header>

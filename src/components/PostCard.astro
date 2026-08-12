@@ -1,0 +1,24 @@
+---
+interface Props {
+  post: {
+    slug: string;
+    title: string;
+    date: string;
+    category: string;
+    excerpt: string;
+    readingTime: string;
+    accent: string;
+  };
+}
+
+const { post } = Astro.props;
+---
+
+<article class:list={["post-card", `accent-${post.accent}`]}>
+  <a href={`/blog/${post.slug}/`} aria-label={`阅读 ${post.title}`}>
+    <span class="post-meta">{post.category} / {post.date} / {post.readingTime}</span>
+    <h3>{post.title}</h3>
+    <p>{post.excerpt}</p>
+    <span class="read-more">Read entry</span>
+  </a>
+</article>

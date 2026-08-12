@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import { houses } from "@data/theme";
+---
+
+<BaseLayout title="学院" description="魔法学院主题的学院专题页面。">
+  <section class="page-hero house-hero">
+    <div class="container">
+      <p class="eyebrow">Houses</p>
+      <h1>学院专题</h1>
+      <p>把学院色彩变成可复用的视觉系统，用在分类、专题和角色页上。</p>
+    </div>
+  </section>
+  <section class="section parchment-section">
+    <div class="container">
+      <SectionHeader title="House Palette" copy="每个学院都有主色、辅色和一句气质描述。" />
+      <div class="house-grid roomy">
+        {houses.map((house) => (
+          <article class="house-card" style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}>
+            <div class="swatches" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <h2>{house.cn}</h2>
+            <p>{house.name}</p>
+            <small>{house.motto}</small>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
