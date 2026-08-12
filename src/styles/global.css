@@ -532,6 +532,7 @@ h1 {
 }
 
 .house-card {
+  display: block;
   position: relative;
   min-height: 260px;
   overflow: hidden;
@@ -540,6 +541,26 @@ h1 {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--swatch-a) 65%, #161014), rgba(20, 15, 18, 0.84)),
     #1a1115;
+}
+
+a.house-card {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+a.house-card:hover,
+a.house-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--swatch-b) 58%, #fff8dc);
+  outline: none;
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
+}
+
+.home-house-grid .house-card h3 {
+  white-space: nowrap;
+  font-size: clamp(1.08rem, 1.55vw, 1.42rem);
 }
 
 .house-badge {

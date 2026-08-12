@@ -59,9 +59,14 @@ import { houses, posts, spells } from "@data/theme";
         title="四大学院色彩系统"
         copy="每张卡片都带有独立配色变量，方便扩展到标签、专题页和人物页。"
       />
-      <div class="house-grid">
+      <div class="house-grid home-house-grid">
         {houses.map((house) => (
-          <article class="house-card" style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}>
+          <a
+            class="house-card"
+            href={`/houses/#${house.id}-card`}
+            style={`--swatch-a:${house.colors[0]};--swatch-b:${house.colors[1]};`}
+            aria-label={`查看${house.cn}学院介绍`}
+          >
             <HouseBadge house={house} />
             <div class="swatches" aria-hidden="true">
               <span></span>
@@ -70,7 +75,7 @@ import { houses, posts, spells } from "@data/theme";
             <h3>{house.cn}</h3>
             <p>{house.name}</p>
             <small>{house.motto}</small>
-          </article>
+          </a>
         ))}
       </div>
     </div>
