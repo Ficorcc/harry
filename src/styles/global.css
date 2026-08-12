@@ -2,8 +2,10 @@
   color-scheme: dark;
   --house-primary: #7f1d1d;
   --house-secondary: #d8a845;
+  --house-accent: #d8a845;
   --house-primary-rgb: 127, 29, 29;
   --house-secondary-rgb: 216, 168, 69;
+  --house-accent-rgb: 216, 168, 69;
   --house-dark: #140f12;
   --house-deep: #23181c;
   --house-contrast: #140f12;
@@ -13,14 +15,14 @@
   --ink-soft: #20171b;
   --parchment: var(--house-parchment);
   --parchment-deep: var(--house-parchment-deep);
-  --gold: var(--house-secondary);
-  --gold-dark: color-mix(in srgb, var(--house-secondary) 68%, #3a260f);
+  --gold: var(--house-accent);
+  --gold-dark: color-mix(in srgb, var(--house-accent) 68%, #3a260f);
   --emerald: #0d5f4a;
   --burgundy: #7b2330;
   --raven: #243d73;
   --smoke: #f8f1d4;
   --muted: rgba(248, 241, 212, 0.72);
-  --line: rgba(var(--house-secondary-rgb), 0.3);
+  --line: rgba(var(--house-accent-rgb), 0.3);
   --shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
   --max: 1160px;
 }
@@ -28,8 +30,10 @@
 html[data-theme="slytherin"] {
   --house-primary: #064e3b;
   --house-secondary: #c8c8c8;
+  --house-accent: #c8c8c8;
   --house-primary-rgb: 6, 78, 59;
   --house-secondary-rgb: 200, 200, 200;
+  --house-accent-rgb: 200, 200, 200;
   --house-dark: #081613;
   --house-deep: #0f2d24;
   --house-contrast: #07120f;
@@ -40,8 +44,10 @@ html[data-theme="slytherin"] {
 html[data-theme="ravenclaw"] {
   --house-primary: #1e3a8a;
   --house-secondary: #b08d57;
+  --house-accent: #b08d57;
   --house-primary-rgb: 30, 58, 138;
   --house-secondary-rgb: 176, 141, 87;
+  --house-accent-rgb: 176, 141, 87;
   --house-dark: #101624;
   --house-deep: #1c2f63;
   --house-contrast: #0c1221;
@@ -52,8 +58,10 @@ html[data-theme="ravenclaw"] {
 html[data-theme="hufflepuff"] {
   --house-primary: #d6a21f;
   --house-secondary: #191714;
+  --house-accent: #f3c53a;
   --house-primary-rgb: 214, 162, 31;
   --house-secondary-rgb: 25, 23, 20;
+  --house-accent-rgb: 243, 197, 58;
   --house-dark: #17130c;
   --house-deep: #2d230d;
   --house-contrast: #100f0d;
@@ -76,7 +84,7 @@ body {
   font-family: ui-serif, Georgia, "Times New Roman", "Noto Serif SC", serif;
   color: var(--smoke);
   background:
-    radial-gradient(circle at 18% 12%, rgba(var(--house-secondary-rgb), 0.18), transparent 24rem),
+    radial-gradient(circle at 18% 12%, rgba(var(--house-accent-rgb), 0.18), transparent 24rem),
     radial-gradient(circle at 88% 22%, rgba(var(--house-primary-rgb), 0.2), transparent 28rem),
     linear-gradient(135deg, var(--house-dark) 0%, var(--house-deep) 46%, var(--house-contrast) 100%);
   letter-spacing: 0;
@@ -209,7 +217,7 @@ img {
   grid-template-columns: repeat(4, 30px);
   gap: 7px;
   padding: 5px;
-  border: 1px solid rgba(var(--house-secondary-rgb), 0.24);
+  border: 1px solid rgba(var(--house-accent-rgb), 0.24);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
 }
@@ -237,7 +245,7 @@ img {
 
 .theme-option[aria-pressed="true"] {
   border-color: var(--gold);
-  box-shadow: 0 0 0 2px rgba(var(--house-secondary-rgb), 0.32);
+  box-shadow: 0 0 0 2px rgba(var(--house-accent-rgb), 0.32);
 }
 
 .theme-option[aria-pressed="true"] span {
@@ -258,7 +266,7 @@ img {
   min-height: 88svh;
   overflow: hidden;
   padding: 148px 0 80px;
-  border-bottom: 1px solid rgba(var(--house-secondary-rgb), 0.35);
+  border-bottom: 1px solid rgba(var(--house-accent-rgb), 0.35);
   background: var(--house-dark);
 }
 
@@ -338,7 +346,7 @@ h1 {
 .button-primary {
   color: var(--house-contrast);
   background: var(--gold);
-  box-shadow: 0 12px 34px rgba(var(--house-secondary-rgb), 0.28);
+  box-shadow: 0 12px 34px rgba(var(--house-accent-rgb), 0.28);
 }
 
 .button-secondary {
@@ -361,7 +369,7 @@ h1 {
 .parchment-section {
   color: #2b1d16;
   background:
-    linear-gradient(90deg, rgba(var(--house-primary-rgb), 0.12), transparent 45%, rgba(var(--house-secondary-rgb), 0.12)),
+    linear-gradient(90deg, rgba(var(--house-primary-rgb), 0.12), transparent 45%, rgba(var(--house-accent-rgb), 0.12)),
     var(--parchment);
 }
 
@@ -375,7 +383,7 @@ h1 {
   color: var(--smoke);
   background:
     linear-gradient(135deg, rgba(var(--house-primary-rgb), 0.38), transparent 44%),
-    linear-gradient(315deg, rgba(var(--house-secondary-rgb), 0.18), rgba(var(--house-primary-rgb), 0.18)),
+    linear-gradient(315deg, rgba(var(--house-accent-rgb), 0.18), rgba(var(--house-primary-rgb), 0.18)),
     var(--house-contrast);
 }
 
@@ -469,7 +477,7 @@ h1 {
 
 .post-card {
   min-height: 260px;
-  border: 1px solid rgba(var(--house-secondary-rgb), 0.3);
+  border: 1px solid rgba(var(--house-accent-rgb), 0.3);
   background: rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow);
 }
@@ -646,7 +654,7 @@ h1 {
 
 .spell-hero {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--house-dark) 96%, transparent), rgba(var(--house-secondary-rgb), 0.2)),
+    linear-gradient(90deg, color-mix(in srgb, var(--house-dark) 96%, transparent), rgba(var(--house-accent-rgb), 0.2)),
     url("/assets/magical-hall-hero.png") center / cover no-repeat;
 }
 
