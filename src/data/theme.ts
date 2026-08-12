@@ -1,5 +1,5 @@
 export const site = {
-  title: "Harry Potter",
+  title: "Hogwarts",
   description: "A cinematic Astro 7 theme for wizarding blogs, fan archives, and spellbound reading rooms.",
   nav: [
     { label: "首页", href: "/" },
