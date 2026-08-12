@@ -1,5 +1,5 @@
 ---
-import { site } from "@data/theme";
+import { site, themeOptions } from "@data/theme";
 ---
 
 <header class="site-header">
@@ -10,9 +10,63 @@ import { site } from "@data/theme";
       <small>Astro 7</small>
     </span>
   </a>
-  <nav aria-label="主导航">
-    {site.nav.map((item) => (
-      <a href={item.href}>{item.label}</a>
-    ))}
-  </nav>
+  <div class="header-controls">
+    <nav class="main-nav" aria-label="主导航">
+      {site.nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <div class="theme-switcher" aria-label="切换学院主题" data-theme-switcher>
+      {themeOptions.map((theme) => (
+        <button
+          type="button"
+          class="theme-option"
+          data-theme-option={theme.id}
+          aria-label={`切换到${theme.cn}主题`}
+          aria-pressed="false"
+          title={`${theme.cn}主题`}
+          style={`--option-a:${theme.colors[0]};--option-b:${theme.colors[1]};`}
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      ))}
+    </div>
+  </div>
 </header>
+
+<script>
+  const storageKey = "wizarding-theme";
+  const themeIds = ["gryffindor", "slytherin", "ravenclaw", "hufflepuff"];
+  const root = document.documentElement;
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-theme-option]"));
+
+  const applyTheme = (theme: string) => {
+    const nextTheme = themeIds.includes(theme) ? theme : "gryffindor";
+    root.dataset.theme = nextTheme;
+    buttons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.themeOption === nextTheme));
+    });
+
+    try {
+      localStorage.setItem(storageKey, nextTheme);
+    } catch {
+      // Theme switching still works for this page when storage is unavailable.
+    }
+  };
+
+  const storedTheme = (() => {
+    try {
+      return localStorage.getItem(storageKey) ?? root.dataset.theme ?? "gryffindor";
+    } catch {
+      return root.dataset.theme ?? "gryffindor";
+    }
+  })();
+
+  applyTheme(storedTheme);
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyTheme(button.dataset.themeOption ?? "gryffindor");
+    });
+  });
+</script>

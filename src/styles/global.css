@@ -1,19 +1,64 @@
 :root {
   color-scheme: dark;
+  --house-primary: #7f1d1d;
+  --house-secondary: #d8a845;
+  --house-primary-rgb: 127, 29, 29;
+  --house-secondary-rgb: 216, 168, 69;
+  --house-dark: #140f12;
+  --house-deep: #23181c;
+  --house-contrast: #140f12;
+  --house-parchment: #efe1b4;
+  --house-parchment-deep: #d7c28b;
   --ink: #140f12;
   --ink-soft: #20171b;
-  --parchment: #efe1b4;
-  --parchment-deep: #d7c28b;
-  --gold: #d8a845;
-  --gold-dark: #8d6722;
+  --parchment: var(--house-parchment);
+  --parchment-deep: var(--house-parchment-deep);
+  --gold: var(--house-secondary);
+  --gold-dark: color-mix(in srgb, var(--house-secondary) 68%, #3a260f);
   --emerald: #0d5f4a;
   --burgundy: #7b2330;
   --raven: #243d73;
   --smoke: #f8f1d4;
   --muted: rgba(248, 241, 212, 0.72);
-  --line: rgba(216, 168, 69, 0.28);
+  --line: rgba(var(--house-secondary-rgb), 0.3);
   --shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
   --max: 1160px;
+}
+
+html[data-theme="slytherin"] {
+  --house-primary: #064e3b;
+  --house-secondary: #c8c8c8;
+  --house-primary-rgb: 6, 78, 59;
+  --house-secondary-rgb: 200, 200, 200;
+  --house-dark: #081613;
+  --house-deep: #0f2d24;
+  --house-contrast: #07120f;
+  --house-parchment: #e4e0d1;
+  --house-parchment-deep: #c8c8c8;
+}
+
+html[data-theme="ravenclaw"] {
+  --house-primary: #1e3a8a;
+  --house-secondary: #b08d57;
+  --house-primary-rgb: 30, 58, 138;
+  --house-secondary-rgb: 176, 141, 87;
+  --house-dark: #101624;
+  --house-deep: #1c2f63;
+  --house-contrast: #0c1221;
+  --house-parchment: #ead7ad;
+  --house-parchment-deep: #c9a66d;
+}
+
+html[data-theme="hufflepuff"] {
+  --house-primary: #d6a21f;
+  --house-secondary: #191714;
+  --house-primary-rgb: 214, 162, 31;
+  --house-secondary-rgb: 25, 23, 20;
+  --house-dark: #17130c;
+  --house-deep: #2d230d;
+  --house-contrast: #100f0d;
+  --house-parchment: #f1df9d;
+  --house-parchment-deep: #d6a21f;
 }
 
 * {
@@ -31,8 +76,9 @@ body {
   font-family: ui-serif, Georgia, "Times New Roman", "Noto Serif SC", serif;
   color: var(--smoke);
   background:
-    radial-gradient(circle at 18% 12%, rgba(216, 168, 69, 0.18), transparent 24rem),
-    linear-gradient(135deg, #140f12 0%, #23181c 42%, #102b27 100%);
+    radial-gradient(circle at 18% 12%, rgba(var(--house-secondary-rgb), 0.18), transparent 24rem),
+    radial-gradient(circle at 88% 22%, rgba(var(--house-primary-rgb), 0.2), transparent 28rem),
+    linear-gradient(135deg, var(--house-dark) 0%, var(--house-deep) 46%, var(--house-contrast) 100%);
   letter-spacing: 0;
 }
 
@@ -78,7 +124,7 @@ img {
   min-height: 74px;
   padding: 14px max(16px, calc((100vw - var(--max)) / 2));
   border-bottom: 1px solid rgba(239, 225, 180, 0.14);
-  background: rgba(20, 15, 18, 0.72);
+  background: color-mix(in srgb, var(--house-dark) 78%, transparent);
   backdrop-filter: blur(18px);
 }
 
@@ -97,7 +143,7 @@ img {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 8px;
-  color: var(--ink);
+  color: var(--house-contrast);
   background: linear-gradient(135deg, var(--gold), var(--parchment));
   font: 800 0.9rem/1 ui-sans-serif, system-ui, sans-serif;
 }
@@ -128,7 +174,15 @@ img {
   font-size: 0.74rem;
 }
 
-nav {
+.header-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+}
+
+.main-nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -136,18 +190,65 @@ nav {
   flex-wrap: wrap;
 }
 
-nav a {
+.main-nav a {
   border-radius: 8px;
   padding: 10px 12px;
   color: rgba(248, 241, 212, 0.82);
   font: 650 0.9rem/1 ui-sans-serif, system-ui, sans-serif;
 }
 
-nav a:hover,
-nav a:focus-visible {
-  color: var(--ink);
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--house-contrast);
   background: var(--gold);
   outline: none;
+}
+
+.theme-switcher {
+  display: grid;
+  grid-template-columns: repeat(4, 30px);
+  gap: 7px;
+  padding: 5px;
+  border: 1px solid rgba(var(--house-secondary-rgb), 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-option {
+  position: relative;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(248, 241, 212, 0.22);
+  border-radius: 8px;
+  padding: 0;
+  background: linear-gradient(135deg, var(--option-a) 0 50%, var(--option-b) 50% 100%);
+  cursor: pointer;
+}
+
+.theme-option span {
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.theme-option[aria-pressed="true"] {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(var(--house-secondary-rgb), 0.32);
+}
+
+.theme-option[aria-pressed="true"] span {
+  opacity: 1;
+}
+
+.theme-option:hover,
+.theme-option:focus-visible {
+  transform: translateY(-1px);
+  outline: 2px solid rgba(239, 225, 180, 0.38);
+  outline-offset: 2px;
 }
 
 .hero {
@@ -157,8 +258,8 @@ nav a:focus-visible {
   min-height: 88svh;
   overflow: hidden;
   padding: 148px 0 80px;
-  border-bottom: 1px solid rgba(216, 168, 69, 0.35);
-  background: #120c10;
+  border-bottom: 1px solid rgba(var(--house-secondary-rgb), 0.35);
+  background: var(--house-dark);
 }
 
 .hero-backdrop {
@@ -166,7 +267,8 @@ nav a:focus-visible {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(11, 7, 10, 0.94) 0%, rgba(18, 9, 13, 0.72) 36%, rgba(18, 9, 13, 0.1) 68%),
-    linear-gradient(0deg, rgba(20, 15, 18, 0.96) 0%, rgba(20, 15, 18, 0.12) 48%),
+    linear-gradient(0deg, color-mix(in srgb, var(--house-dark) 96%, transparent) 0%, rgba(20, 15, 18, 0.12) 48%),
+    radial-gradient(circle at 82% 18%, rgba(var(--house-primary-rgb), 0.24), transparent 28rem),
     url("/assets/magical-hall-hero.png") center / cover no-repeat;
   transform: scale(1.01);
 }
@@ -234,9 +336,9 @@ h1 {
 }
 
 .button-primary {
-  color: var(--ink);
+  color: var(--house-contrast);
   background: var(--gold);
-  box-shadow: 0 12px 34px rgba(216, 168, 69, 0.28);
+  box-shadow: 0 12px 34px rgba(var(--house-secondary-rgb), 0.28);
 }
 
 .button-secondary {
@@ -259,29 +361,29 @@ h1 {
 .parchment-section {
   color: #2b1d16;
   background:
-    linear-gradient(90deg, rgba(123, 35, 48, 0.08), transparent 45%, rgba(13, 95, 74, 0.1)),
+    linear-gradient(90deg, rgba(var(--house-primary-rgb), 0.12), transparent 45%, rgba(var(--house-secondary-rgb), 0.12)),
     var(--parchment);
 }
 
 .dark-section {
   background:
-    linear-gradient(90deg, rgba(13, 95, 74, 0.26), transparent),
-    #191115;
+    linear-gradient(90deg, rgba(var(--house-primary-rgb), 0.3), transparent),
+    var(--house-dark);
 }
 
 .house-band {
   color: var(--smoke);
   background:
-    linear-gradient(135deg, rgba(123, 35, 48, 0.34), transparent 44%),
-    linear-gradient(315deg, rgba(36, 61, 115, 0.36), rgba(13, 95, 74, 0.2)),
-    #171114;
+    linear-gradient(135deg, rgba(var(--house-primary-rgb), 0.38), transparent 44%),
+    linear-gradient(315deg, rgba(var(--house-secondary-rgb), 0.18), rgba(var(--house-primary-rgb), 0.18)),
+    var(--house-contrast);
 }
 
 .spell-section {
   color: #261a13;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent),
-    #e6d19a;
+    var(--parchment-deep);
 }
 
 .section-header {
@@ -330,7 +432,7 @@ h1 {
 .feature-block span {
   display: inline-flex;
   margin-bottom: 44px;
-  color: var(--burgundy);
+  color: var(--house-primary);
   font: 900 0.85rem/1 ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -367,7 +469,7 @@ h1 {
 
 .post-card {
   min-height: 260px;
-  border: 1px solid rgba(216, 168, 69, 0.3);
+  border: 1px solid rgba(var(--house-secondary-rgb), 0.3);
   background: rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow);
 }
@@ -397,7 +499,7 @@ h1 {
 
 .read-more {
   margin-top: auto;
-  color: #f7d77c;
+  color: color-mix(in srgb, var(--gold) 78%, #fff8dc);
   font: 850 0.9rem/1 ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -506,7 +608,7 @@ h1 {
 }
 
 .spell-list strong {
-  color: var(--burgundy);
+  color: var(--house-primary);
   font-size: 1.35rem;
 }
 
@@ -521,7 +623,7 @@ h1 {
   padding: 150px 0 70px;
   border-bottom: 1px solid var(--line);
   background:
-    linear-gradient(90deg, rgba(20, 15, 18, 0.94), rgba(20, 15, 18, 0.42)),
+    linear-gradient(90deg, color-mix(in srgb, var(--house-dark) 94%, transparent), rgba(var(--house-primary-rgb), 0.34)),
     url("/assets/magical-hall-hero.png") center 42% / cover no-repeat;
 }
 
@@ -538,13 +640,13 @@ h1 {
 
 .house-hero {
   background:
-    linear-gradient(90deg, rgba(20, 15, 18, 0.95), rgba(13, 95, 74, 0.24)),
+    linear-gradient(90deg, color-mix(in srgb, var(--house-dark) 95%, transparent), rgba(var(--house-primary-rgb), 0.34)),
     url("/assets/magical-hall-hero.png") center / cover no-repeat;
 }
 
 .spell-hero {
   background:
-    linear-gradient(90deg, rgba(20, 15, 18, 0.96), rgba(123, 35, 48, 0.2)),
+    linear-gradient(90deg, color-mix(in srgb, var(--house-dark) 96%, transparent), rgba(var(--house-secondary-rgb), 0.2)),
     url("/assets/magical-hall-hero.png") center / cover no-repeat;
 }
 
@@ -592,7 +694,7 @@ h1 {
   padding: 34px max(16px, calc((100vw - var(--max)) / 2));
   border-top: 1px solid rgba(239, 225, 180, 0.14);
   color: rgba(248, 241, 212, 0.72);
-  background: #100b0d;
+  background: color-mix(in srgb, var(--house-dark) 86%, #000);
 }
 
 .site-footer p {
@@ -617,6 +719,17 @@ h1 {
     width: 100%;
   }
 
+  .header-controls {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
   .hero {
     min-height: 84svh;
     padding-top: 174px;
@@ -625,7 +738,8 @@ h1 {
   .hero-backdrop {
     background:
       linear-gradient(90deg, rgba(11, 7, 10, 0.96) 0%, rgba(18, 9, 13, 0.74) 58%, rgba(18, 9, 13, 0.28) 100%),
-      linear-gradient(0deg, rgba(20, 15, 18, 0.98) 0%, rgba(20, 15, 18, 0.28) 56%),
+      linear-gradient(0deg, color-mix(in srgb, var(--house-dark) 98%, transparent) 0%, rgba(20, 15, 18, 0.28) 56%),
+      radial-gradient(circle at 82% 18%, rgba(var(--house-primary-rgb), 0.24), transparent 28rem),
       url("/assets/magical-hall-hero.png") 55% center / cover no-repeat;
   }
 
@@ -651,8 +765,17 @@ h1 {
     max-width: 15ch;
   }
 
-  nav a {
+  .main-nav a {
     padding-inline: 9px;
+  }
+
+  .theme-switcher {
+    grid-template-columns: repeat(4, 28px);
+  }
+
+  .theme-option {
+    width: 28px;
+    height: 28px;
   }
 
   .hero-actions,

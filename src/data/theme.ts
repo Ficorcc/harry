@@ -9,6 +9,33 @@ export const site = {
   ],
 };
 
+export const themeOptions = [
+  {
+    id: "gryffindor",
+    name: "Gryffindor",
+    cn: "格兰芬多",
+    colors: ["#7f1d1d", "#d8a845"],
+  },
+  {
+    id: "slytherin",
+    name: "Slytherin",
+    cn: "斯莱特林",
+    colors: ["#064e3b", "#c8c8c8"],
+  },
+  {
+    id: "ravenclaw",
+    name: "Ravenclaw",
+    cn: "拉文克劳",
+    colors: ["#1e3a8a", "#b08d57"],
+  },
+  {
+    id: "hufflepuff",
+    name: "Hufflepuff",
+    cn: "赫奇帕奇",
+    colors: ["#d6a21f", "#191714"],
+  },
+];
+
 export const posts = [
   {
     slug: "first-night-at-the-castle",
